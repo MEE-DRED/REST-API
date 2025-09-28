@@ -52,7 +52,7 @@ curl -X GET http://localhost:8000/transactions \
   -H "Content-Type: application/json"
 ```
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 REST API/
@@ -234,61 +234,10 @@ See [docs/api_docs.md](docs/api_docs.md) for:
 
 ##  Assignment Requirements Checklist
 
-- ✅ **Data Parsing**: XML parsed to JSON objects
-- ✅ **API Implementation**: All CRUD endpoints functional
-- ✅ **Authentication**: Basic Auth with 401 error handling
-- ✅ **API Documentation**: Complete with examples and error codes
-- ✅ **DSA Integration**: Linear search vs dictionary lookup comparison
-- ✅ **Testing**: Comprehensive test suite with multiple methods
+- **Data Parsing**: XML parsed to JSON objects
+- **API Implementation**: All CRUD endpoints functional
+- **Authentication**: Basic Auth with 401 error handling
+- **API Documentation**: Complete with examples and error codes
+- **DSA Integration**: Linear search vs dictionary lookup comparison
+- **Testing**: Comprehensive test suite with multiple methods
 
-##  Future Enhancements
-
-1. **Database Integration**: Replace in-memory storage with SQLite/PostgreSQL
-2. **Enhanced Security**: Implement JWT or OAuth2
-3. **Rate Limiting**: Prevent API abuse
-4. **Logging**: Comprehensive request/response logging
-5. **Caching**: Redis-based caching for better performance
-6. **API Versioning**: Support multiple API versions
-7. **Swagger Documentation**: Interactive API documentation
-
-##  Troubleshooting
-
-### Common Issues
-
-**Server won't start:**
-- Check if port 8000 is available
-- Ensure Python 3.7+ is installed
-- Verify you're in the correct directory
-
-**Authentication fails:**
-- Verify credentials are correct
-- Check Base64 encoding format
-- Ensure Authorization header is included
-
-**Tests fail:**
-- Make sure server is running first
-- Check network connectivity
-- Verify API endpoints are accessible
-
-### Debug Mode
-Add debug output to the server:
-```python
-# In server.py, add to the handler class:
-def log_message(self, format, *args):
-    print(f"[{self.address_string()}] {format % args}")
-```
-
-##  License
-
-This project is created for educational purposes as part of a REST API development assignment.
-
-##  Contributing
-
-This is an academic project. For educational use and reference only.
-
----
-
-**Author**: REST API Assignment  
-**Date**: September 2024  
-**Python Version**: 3.7+  
-**Dependencies**: None (Python standard library only)
