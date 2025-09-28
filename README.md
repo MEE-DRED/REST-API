@@ -85,7 +85,7 @@ The API uses **Basic Authentication** with the following credentials:
 Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=
 ```
 
-## 🛠 API Endpoints
+## API Endpoints
 
 ### Base URL: `http://localhost:8000`
 
