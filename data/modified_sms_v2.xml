@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sms_transactions>
+    <transaction id="1">
+        <type>SEND_MONEY</type>
+        <amount>5000.00</amount>
+        <sender>+1234567890</sender>
+        <receiver>+0987654321</receiver>
+        <timestamp>2024-01-15T10:30:00Z</timestamp>
+        <reference>TXN001</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="2">
+        <type>RECEIVE_MONEY</type>
+        <amount>2500.50</amount>
+        <sender>+0987654321</sender>
+        <receiver>+1234567890</receiver>
+        <timestamp>2024-01-15T11:45:00Z</timestamp>
+        <reference>TXN002</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="3">
+        <type>WITHDRAW</type>
+        <amount>1000.00</amount>
+        <sender>+1234567890</sender>
+        <receiver>AGENT_001</receiver>
+        <timestamp>2024-01-15T14:20:00Z</timestamp>
+        <reference>TXN003</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="4">
+        <type>DEPOSIT</type>
+        <amount>3000.00</amount>
+        <sender>AGENT_002</sender>
+        <receiver>+0987654321</receiver>
+        <timestamp>2024-01-16T09:15:00Z</timestamp>
+        <reference>TXN004</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="5">
+        <type>SEND_MONEY</type>
+        <amount>750.25</amount>
+        <sender>+1111111111</sender>
+        <receiver>+2222222222</receiver>
+        <timestamp>2024-01-16T16:30:00Z</timestamp>
+        <reference>TXN005</reference>
+        <status>PENDING</status>
+    </transaction>
+    <transaction id="6">
+        <type>BILL_PAYMENT</type>
+        <amount>850.00</amount>
+        <sender>+3333333333</sender>
+        <receiver>UTILITY_001</receiver>
+        <timestamp>2024-01-17T08:45:00Z</timestamp>
+        <reference>TXN006</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="7">
+        <type>SEND_MONEY</type>
+        <amount>1200.75</amount>
+        <sender>+4444444444</sender>
+        <receiver>+5555555555</receiver>
+        <timestamp>2024-01-17T12:00:00Z</timestamp>
+        <reference>TXN007</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="8">
+        <type>RECEIVE_MONEY</type>
+        <amount>4500.00</amount>
+        <sender>+6666666666</sender>
+        <receiver>+7777777777</receiver>
+        <timestamp>2024-01-17T15:20:00Z</timestamp>
+        <reference>TXN008</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="9">
+        <type>WITHDRAW</type>
+        <amount>2000.00</amount>
+        <sender>+8888888888</sender>
+        <receiver>AGENT_003</receiver>
+        <timestamp>2024-01-18T10:10:00Z</timestamp>
+        <reference>TXN009</reference>
+        <status>FAILED</status>
+    </transaction>
+    <transaction id="10">
+        <type>DEPOSIT</type>
+        <amount>1500.50</amount>
+        <sender>AGENT_004</sender>
+        <receiver>+9999999999</receiver>
+        <timestamp>2024-01-18T13:25:00Z</timestamp>
+        <reference>TXN010</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="11">
+        <type>SEND_MONEY</type>
+        <amount>300.00</amount>
+        <sender>+1010101010</sender>
+        <receiver>+2020202020</receiver>
+        <timestamp>2024-01-19T07:30:00Z</timestamp>
+        <reference>TXN011</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="12">
+        <type>BILL_PAYMENT</type>
+        <amount>650.75</amount>
+        <sender>+3030303030</sender>
+        <receiver>TELECOM_001</receiver>
+        <timestamp>2024-01-19T11:15:00Z</timestamp>
+        <reference>TXN012</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="13">
+        <type>RECEIVE_MONEY</type>
+        <amount>2200.00</amount>
+        <sender>+4040404040</sender>
+        <receiver>+5050505050</receiver>
+        <timestamp>2024-01-19T14:40:00Z</timestamp>
+        <reference>TXN013</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="14">
+        <type>WITHDRAW</type>
+        <amount>800.25</amount>
+        <sender>+6060606060</sender>
+        <receiver>AGENT_005</receiver>
+        <timestamp>2024-01-20T09:50:00Z</timestamp>
+        <reference>TXN014</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="15">
+        <type>DEPOSIT</type>
+        <amount>3500.00</amount>
+        <sender>AGENT_006</sender>
+        <receiver>+7070707070</receiver>
+        <timestamp>2024-01-20T12:30:00Z</timestamp>
+        <reference>TXN015</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="16">
+        <type>SEND_MONEY</type>
+        <amount>950.50</amount>
+        <sender>+8080808080</sender>
+        <receiver>+9090909090</receiver>
+        <timestamp>2024-01-20T16:15:00Z</timestamp>
+        <reference>TXN016</reference>
+        <status>PENDING</status>
+    </transaction>
+    <transaction id="17">
+        <type>BILL_PAYMENT</type>
+        <amount>1100.00</amount>
+        <sender>+1212121212</sender>
+        <receiver>INSURANCE_001</receiver>
+        <timestamp>2024-01-21T08:20:00Z</timestamp>
+        <reference>TXN017</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="18">
+        <type>RECEIVE_MONEY</type>
+        <amount>1750.75</amount>
+        <sender>+1313131313</sender>
+        <receiver>+1414141414</receiver>
+        <timestamp>2024-01-21T11:35:00Z</timestamp>
+        <reference>TXN018</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="19">
+        <type>WITHDRAW</type>
+        <amount>500.00</amount>
+        <sender>+1515151515</sender>
+        <receiver>AGENT_007</receiver>
+        <timestamp>2024-01-21T14:50:00Z</timestamp>
+        <reference>TXN019</reference>
+        <status>COMPLETED</status>
+    </transaction>
+    <transaction id="20">
+        <type>DEPOSIT</type>
+        <amount>2750.25</amount>
+        <sender>AGENT_008</sender>
+        <receiver>+1616161616</receiver>
+        <timestamp>2024-01-21T17:10:00Z</timestamp>
+        <reference>TXN020</reference>
+        <status>COMPLETED</status>
+    </transaction>
+</sms_transactions>
