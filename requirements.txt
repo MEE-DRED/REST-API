@@ -1,0 +1,23 @@
+# SMS Transactions REST API Requirements
+# This project uses only Python standard library modules
+
+# Core modules used:
+# - http.server (REST API server)
+# - json (JSON data handling)
+# - xml.etree.ElementTree (XML parsing)
+# - base64 (Basic Authentication)
+# - urllib.parse (URL parsing)
+# - time (Performance measurements)
+# - typing (Type hints)
+python api/server.pypython api/server.pycd "c:\Users\HP\Desktop\REST API"
+python api/test_api.py
+# For testing (optional, but recommended):
+requests>=2.25.0  # For API testing scripts
+
+# Development tools (optional):
+# pylint>=2.10.0  # Code quality
+# black>=21.0.0   # Code formatting
+
+# Note: The core API functionality requires no external dependencies
+# Install requests only if you want to run the automated test suite:
+# pip install requests
