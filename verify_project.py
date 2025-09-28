@@ -18,16 +18,16 @@ def test_xml_parsing():
         parser = TransactionParser('data/modified_sms_v2.xml')
         transactions = parser.parse_xml_to_json()
         
-        print(f"✅ Successfully parsed {len(transactions)} transactions")
+        print(f"Successfully parsed {len(transactions)} transactions")
         
         if len(transactions) > 0:
             first_transaction = transactions[0]
-            print(f"✅ Sample transaction: ID={first_transaction['id']}, Type={first_transaction['type']}, Amount=${first_transaction['amount']}")
+            print(f"Sample transaction: ID={first_transaction['id']}, Type={first_transaction['type']}, Amount=${first_transaction['amount']}")
             
         return True
         
     except Exception as e:
-        print(f"❌ XML parsing failed: {e}")
+        print(f"XML parsing failed: {e}")
         return False
 
 def test_search_algorithms():
@@ -55,22 +55,22 @@ def test_search_algorithms():
             # Verify both methods return the same result
             if linear_result == dict_result:
                 status = "Found" if linear_result else "Not Found"
-                print(f"✅ ID {test_id}: {status} (both methods agree)")
+                print(f"ID {test_id}: {status} (both methods agree)")
             else:
-                print(f"❌ ID {test_id}: Methods disagree!")
+                print(f"ID {test_id}: Methods disagree!")
                 return False
         
         # Quick performance test
         existing_ids = [t['id'] for t in transactions[:5]]
         results = search_algo.compare_search_efficiency(existing_ids, iterations=10)
         
-        print(f"✅ Performance test completed")
+        print(f"Performance test completed")
         print(f"   Dictionary lookup is {results['speedup_factor']:.1f}x faster")
         
         return True
         
     except Exception as e:
-        print(f"❌ Search algorithm test failed: {e}")
+        print(f"Search algorithm test failed: {e}")
         return False
 
 def test_server_import():
@@ -81,13 +81,13 @@ def test_server_import():
         sys.path.append(os.path.join(os.path.dirname(__file__), 'api'))
         import server
         
-        print("✅ Server module imported successfully")
-        print(f"✅ Found {len(server.TransactionAPIHandler.VALID_CREDENTIALS)} valid credential sets")
+        print("Server module imported successfully")
+        print(f"Found {len(server.TransactionAPIHandler.VALID_CREDENTIALS)} valid credential sets")
         
         return True
         
     except Exception as e:
-        print(f"❌ Server import failed: {e}")
+        print(f"Server import failed: {e}")
         return False
 
 def main():
@@ -112,7 +112,7 @@ def main():
             else:
                 failed += 1
         except Exception as e:
-            print(f"❌ Test {test.__name__} crashed: {e}")
+            print(f"Test {test.__name__} crashed: {e}")
             failed += 1
     
     print("\n" + "=" * 60)
@@ -123,13 +123,13 @@ def main():
     print(f"Success Rate: {(passed/(passed+failed)*100):.1f}%" if (passed+failed) > 0 else "N/A")
     
     if failed == 0:
-        print("\n🎉 All components verified successfully!")
+        print("\nAll components verified successfully!")
         print("\nNext steps:")
         print("1. Start the API server: python api/server.py")
         print("2. Test the API: python api/test_api.py")
         print("3. Or use the curl script: test_api_curl.bat")
     else:
-        print(f"\n⚠️ {failed} component(s) need attention.")
+        print(f"\n{failed} component(s) need attention.")
         print("Please check the error messages above.")
 
 if __name__ == "__main__":
