@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SMS Transactions REST API</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .endpoint {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .method {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.875rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .get {
+            background-color: #28a745;
+        }
+
+        .post {
+            background-color: #007bff;
+        }
+
+        .put {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .delete {
+            background-color: #dc3545;
+        }
+
+        .code {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 0.75rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            overflow-x: auto;
+        }
+
+        .credentials {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+        }
+
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 0.5rem;
+        }
+
+        .status-running {
+            background-color: #28a745;
+        }
+
+        .status-stopped {
+            background-color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>SMS Transactions REST API</h1>
+        <p>Secure mobile money transaction management system</p>
+        <div id="serverStatus">
+            <span class="status-indicator status-stopped"></span>
+            <span id="statusText">Server Status: Checking...</span>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2> Quick Start</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>1. Start Server</h3>
+                <div class="code">python api/server.py</div>
+                <p>Starts the REST API server on <code>http://localhost:8000</code></p>
+            </div>
+            <div class="card">
+                <h3>2. Test API</h3>
+                <div class="code">python api/test_api.py</div>
+                <p>Run comprehensive automated tests</p>
+            </div>
+            <div class="card">
+                <h3>3. Demo DSA</h3>
+                <div class="code">python demo_dsa.py</div>
+                <p>Data structures & algorithms comparison</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2> Authentication</h2>
+        <div class="credentials">
+            <h4>Valid Credentials (Basic Auth)</h4>
+            <ul>
+                <li><strong>admin</strong> : password123</li>
+                <li><strong>user</strong> : user123</li>
+                <li><strong>demo</strong> : demo123</li>
+            </ul>
+            <p><small>Authorization Header: <code>Basic &lt;base64(username:password)&gt;</code></small></p>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2> API Endpoints</h2>
+
+        <div class="endpoint">
+            <div><span class="method get">GET</span> <code>/transactions</code></div>
+            <p>Retrieve all SMS transactions with optional filtering</p>
+            <div class="code">curl -X GET http://localhost:8000/transactions \
+                -H "Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM="</div>
+        </div>
+
+        <div class="endpoint">
+            <div><span class="method get">GET</span> <code>/transactions/{id}</code></div>
+            <p>Get a specific transaction by ID</p>
+            <div class="code">curl -X GET http://localhost:8000/transactions/1 \
+                -H "Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM="</div>
+        </div>
+
+        <div class="endpoint">
+            <div><span class="method post">POST</span> <code>/transactions</code></div>
+            <p>Create a new transaction</p>
+            <div class="code">curl -X POST http://localhost:8000/transactions \
+                -H "Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=" \
+                -H "Content-Type: application/json" \
+                -d '{"type": "SEND_MONEY", "amount": 1500.75, "sender": "+1111111111", "receiver": "+2222222222",
+                "reference": "TXN001"}'</div>
+        </div>
+
+        <div class="endpoint">
+            <div><span class="method put">PUT</span> <code>/transactions/{id}</code></div>
+            <p>Update an existing transaction</p>
+            <div class="code">curl -X PUT http://localhost:8000/transactions/1 \
+                -H "Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=" \
+                -H "Content-Type: application/json" \
+                -d '{"status": "COMPLETED", "amount": 1600.00}'</div>
+        </div>
+
+        <div class="endpoint">
+            <div><span class="method delete">DELETE</span> <code>/transactions/{id}</code></div>
+            <p>Delete a transaction</p>
+            <div class="code">curl -X DELETE http://localhost:8000/transactions/1 \
+                -H "Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM="</div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2> Performance Analysis</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Linear Search</h3>
+                <p><strong>Time Complexity:</strong> O(n)</p>
+                <p>Scans through list sequentially</p>
+                <p>Simple but inefficient for large datasets</p>
+            </div>
+            <div class="card">
+                <h3>Dictionary Lookup</h3>
+                <p><strong>Time Complexity:</strong> O(1)</p>
+                <p>Hash-based direct access</p>
+                <p class="success">7-50x faster than linear search</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2> Testing Options</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Automated Python Tests</h3>
+                <div class="code">python api/test_api.py</div>
+                <ul>
+                    <li>Authentication validation</li>
+                    <li>CRUD operations testing</li>
+                    <li>Error handling verification</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Windows Batch Script</h3>
+                <div class="code">test_api_curl.bat</div>
+                <ul>
+                    <li>curl-based testing</li>
+                    <li>All endpoint coverage</li>
+                    <li>Easy to run on Windows</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3>Manual Testing</h3>
+                <p>Use tools like Postman or curl to test individual endpoints manually</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2> Documentation</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>API Documentation</h3>
+                <p><code>docs/api_docs.md</code></p>
+                <p>Complete endpoint documentation with examples</p>
+            </div>
+            <div class="card">
+                <h3> Technical Report</h3>
+                <p><code>docs/technical_report.md</code></p>
+                <p>Comprehensive analysis and security assessment</p>
+            </div>
+            <div class="card">
+                <h3> Project Setup</h3>
+                <p><code>README.md</code></p>
+                <p>Installation guide and project overview</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>Security Notice</h2>
+        <div style="background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 1rem; border-radius: 5px;">
+            <h4>Basic Authentication Limitations</h4>
+            <p>This implementation uses Basic Authentication for educational purposes. In production, consider:</p>
+            <ul>
+                <li><strong>JWT (JSON Web Tokens)</strong> for stateless authentication</li>
+                <li><strong>OAuth 2.0</strong> for industry-standard authorization</li>
+                <li><strong>HTTPS/TLS</strong> for encrypted communication</li>
+                <li><strong>Rate limiting</strong> to prevent abuse</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Check server status
+        async function checkServerStatus() {
+            try {
+                const response = await fetch('http://localhost:8000/transactions', {
+                    headers: {
+                        'Authorization': 'Basic ' + btoa('admin:password123')
+                    }
+                });
+
+                const statusIndicator = document.querySelector('.status-indicator');
+                const statusText = document.getElementById('statusText');
+
+                if (response.ok) {
+                    statusIndicator.className = 'status-indicator status-running';
+                    statusText.textContent = 'Server Status: Running ✅';
+                } else {
+                    statusIndicator.className = 'status-indicator status-stopped';
+                    statusText.textContent = 'Server Status: Error ❌';
+                }
+            } catch (error) {
+                const statusIndicator = document.querySelector('.status-indicator');
+                const statusText = document.getElementById('statusText');
+                statusIndicator.className = 'status-indicator status-stopped';
+                statusText.textContent = 'Server Status: Not Running ⚠️';
+            }
+        }
+
+        // Check status on page load
+        checkServerStatus();
+
+        // Check status every 10 seconds
+        setInterval(checkServerStatus, 10000);
+    </script>
+</body>
+
+</html>
